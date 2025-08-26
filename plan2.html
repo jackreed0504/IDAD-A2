@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planning and Sketches</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Jack Reed Assignment 2 Documentation</h1>
+      <h2>Planning and Sketches</h2>
+    </header>
+    <main>
+      <h3>Plan:</h3>
+      <p>
+        Over Assignment 2 and 3, we are designing and developing an interface
+        for an interactive audio project, using the Tone.js framework. For this
+        project, I would like to design an interactive music piece, where the
+        user can change aspects of the mix by interacting with abstract
+        controls.
+      </p>
+      <p>
+        We are given a set of creative prompts to work with for the project:
+      </p>
+      <ul>
+        <li>No text characters</li>
+        <li>All text characters</li>
+        <li>Skeuomorphism</li>
+        <li>Spacial control</li>
+        <li>Novel input</li>
+      </ul>
+      <p>
+        I plan on choosing the prompt "Novel input". I want to achieve this
+        through abstract controls, resembling a an art piece or video game,
+        through which the user can interact with the piece.
+      </p>
+      <p>
+        We must also use one of the following JavaScript methods in our project:
+      </p>
+      <ul>
+        <li>Random : Math.random()</li>
+        <li>Date/time : Date.now()</li>
+        <li>Location : navigator.geolocation.getCurrentPosition()</li>
+      </ul>
+      <p>
+        I plan on choosing "Date/time", using the time of day to change the
+        appearance of the scene.
+      </p>
+      <img src="assets/idadplan.jpg" alt="Plan from my sketchbook" />
+      <h3>Sketches:</h3>
+      <img src="assets/inputs.jpg" alt="Sketch of the inputs" />
+      <p>
+        I wanted to use 3D graphics resembling the artstyle of the video game
+        Monument Valley, inspiring play in the viewer. In turn, it also will
+        evoke the optically puzzling works of M.C Escher, eliciting
+        experimentation from the viewer.
+      </p>
+
+      <p>
+        Rendering 3D graphics in a web project would be hard to achieve in this
+        project due to my lack of previous experience with it and the limited
+        time available in the assignment. I experimented with creating
+        pre-rendered sprites in Blender and implementing them in an interactive
+        Figma prototype, to which I acheived a degree of success:
+      </p>
+
+      <video src="assets/figmavid.mov" controls></video>
+
+      <p>
+        I also wanted to test how much effort it would take to replicate this
+        with HTML+CSS+JS, to evaluate whether this was achieveable in the
+        timeframe of the assignment:
+      </p>
+
+      <video src="assets/htmlvid.mov" controls></video>
+
+      <p>
+        This was also somewhat successful. There are some problems I will need
+        to solve to have success with this method:
+      </p>
+
+      <ul>
+        <li>I need to learn how to limit how far I can drag an item</li>
+        <li>
+          The shadow for the rightmost pillar is attached to the image. How can
+          I make sure this isn't exposed to the viewer?
+        </li>
+        <li>Dragging the afforementioned shadow moves the "wrong" pillar</li>
+        <li>I need to decide whether the pillars are sliders or buttons</li>
+      </ul>
+    </main>
+  </body>
+</html>
