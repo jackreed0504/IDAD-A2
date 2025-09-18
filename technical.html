@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Implementation</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Jack Reed Assignment 2 Documentation</h1>
+      <h2>Technical Implementation</h2>
+    </header>
+    <main>
+      <h3>Objects</h3>
+      <p>
+        Most of objects in my project are 3D objects created with CSS
+        transforms, including the 3 pillars and the diamond. These are created
+        by first making divs in the html document/ These are the planes in the
+        shapes. In CSS 'transform-style: preserve-3d;' allows them to be
+        transformed in 3D. I also created a sphere object, which is actually a
+        single div and not a 3D object, but a radial gradient is used to create
+        the illusion that it is 3D.
+      </p>
+      <p>
+        When the diamond or sphere are clicked, they glow. I created the glow
+        using the CSS 'box-shadow' property for the sphere. The 'triangles'
+        which make up the diamond are actually rectangles with an invisible
+        half, making them look like triangles. This meant I couldn't use the
+        'box-shadow' property, and instead created the diamond's glow as a png
+        in photoshop, which is declared in HTML using the 'img' tag. The
+        diamond, diamond's glow and the sphere are animated using CSS
+        animations.
+      </p>
+
+      <h3>Sound</h3>
+      <p>
+        The sound in this project is powered by the tone.js framework. I used
+        the 'players' class, which allows you to create multiple audio players.
+        Each player plays a different wav file in a loop, such as the main sound
+        (keys and bass), the drums minus the snare, and the snare drum. The
+        players are set up in the toneSetup.js file and routed to the end of the
+        players.chain (signal chain). The chain additionally includes a filter,
+        a reverb and a delay, which are set up in the toneSetup.js file. On
+        tone.init, which starts tone.js after the prompt at the start, all three
+        players are initialised.
+      </p>
+
+      <h3>Controls</h3>
+      <p>
+        In the UIControls.js file, I used the jquery UI framework to make the 3
+        pillars draggable, using jquery UI's '.draggable' method. Upon dragging,
+        it defines a variable: Jquery's 'ui.position.top' method captures the
+        distance of the pillar from the top of the UI, which is divided by the
+        height of the document to get a fraction, multiplied to fit the desired
+        scale, and subtracted from the desired maximum (so the value goes up
+        when the pillar moves up).
+      </p>
+      <p>
+        When a pillar is dragged, a function is called which changes the desired
+        parameter. For instance, two pillars calls the functions
+        'ChangeChimesVolume' or 'ChangeMelVolume', which check if the previously
+        defined variable is between -12 and 12 dB and if so, change the
+        '.volume.value' of a player to that value. Another pillar calls the
+        function 'newFilterFreq' checks if the value of the variable is between
+        0 and 20000, and if so, changes 'filter.frequency.value' to that value.
+      </p>
+      <p>
+        In the UIControls.js file, I created a function called
+        'toggleDiamondGlow', which checks if 'glow.style.visiblity == "visible"'
+        in the CSS. If it is, it changes it to "hidden", and otherwise it
+        changes it to "visible". In the UIControls.js file, there is also a
+        function called 'toggleReverb' which changes the 'reverb.wet.value' to
+        0.5 if 'verbOn' is "true", and otherwise sets it to 0. Inside the
+        'toneInit()' function within the toneSetup.js file, I created and
+        defined the verbOn variable as false. I added a "click" event listener
+        to the diamond, which switches the boolean state of the 'verbOn', and
+        calls the 'toggleReverb' function and the 'toggleDiamondGlow' function.
+      </p>
+      <p>
+        In UIControls.js, I made a function called 'toggleSphereGlow', which
+        checks if 'sphere.style.boxShadow' is set to "none" in the CSS. If it
+        is, it adds the properties for a white glow around the sphere. If not,
+        it sets it to "none". In UIControls.js, I also made a function called
+        'toggleDelay', which changes the 'delay.wet.value' to 0.5 if 'delayOn'
+        is "true", and otherwise sets it to 0. In toneSetup.js, a 'delayOn'
+        variable is created and defined as "false". An event listener is added
+        to the sphere, which switches the boolean state of 'delayOn', and calls
+        the 'toggleDelay' and the 'toggleSphereGlow' functions.
+      </p>
+
+      <h3>math.random()</h3>
+      <p>
+        I am using the math.random() function to randomly change the snare drum
+        sound whenever the user reloads the page. One of the players in the
+        'players' class defined in toneSetup.js is set to a file described as
+        `snare${randomNum}.wav`. In my audioSamples folder, I have 7 different
+        Wavs with different snares, named 'snare0' to 'snare6'. A function
+        called 'getRandomInt' is defined and called at the start of
+        toneSetup.js. It uses Math.random() to create a random number between 0
+        and 1, multiplies it by 7, and then rounds it down to the nearest whole
+        number. This number is then stored in the variable 'randomNum', allowing
+        the name of the snare audio file the player looks for to randomly
+        change.
+      </p>
+      <h3>System diagram</h3>
+      <img src="/assets/flowchart.jpeg" alt="flowchart" class="flowchart" />
+    </main>
+  </body>
+</html>
